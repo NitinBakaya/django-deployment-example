@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{%extends 'userapp/base.html' %}
+{% load static %}
+  {% block body_block %}
+
+    <h1 class="row justify-content-center align-items-center">Welcome to Registration Page.</h1>
+    <div class="jumbotron">
+      {% if registered %}
+        <h1>Thanks for Registration.</h1>
+      {% else %}
+        <h3>Fill up the Registration Form.</h3><br>
+
+        <form enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          {{ user_info.as_p }}
+          {{ profile_info.as_p }}
+          <input type="submit" value="Register">
+        </form>
+      {% endif %}
+    </div>
+
+  {% endblock %}

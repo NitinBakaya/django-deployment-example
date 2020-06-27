@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+      <nav class="navbar navbar-light navbar-expand-md" style="background-color: #e3f2fd;' class="d-md-flex p-2 flex-md-fill bd-highlight">
+      <div class="container">
+        <ul class='navbar-nav mr-auto'>
+          <li><a class='navbar-brand' href="{% url 'index' %}">Django</a></li>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="d-md-flex p-2 flex-fill bd-highlight align-items-center">
+          <li class='navbar-item'><a class='navbar-link' href="{% url 'userapp:register' %}">Register</a></li>
+
+          {% if user.is_authenticated %}
+              <li class='navbar-item'><a class='navbar-link' href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+            <li class='navbar-item'><a class='navbar-link' href="{% url 'userapp:user_login' %}">Log In</a></li>
+          {% endif %}
+        </div>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block body_block %}
+
+      {% endblock %}
+    </div>
+  </body>
+</html>
